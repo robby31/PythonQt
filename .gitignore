@@ -1,0 +1,9 @@
+*.user
+*.o
+.preprocessed.tmp
+*.pyc
+lib
+Makefile
+moc_*.cpp
+object_script.*
+PythonQt.pro.user
