@@ -35,3 +35,7 @@ include ( src.pri )
 
 include($${PYTHONQT_GENERATED_PATH}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin.pri)
 include($${PYTHONQT_GENERATED_PATH}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin.pri)
+
+HEADERS += \
+    PythonQtDoc.h \
+    PythonQtPythonInclude.h
