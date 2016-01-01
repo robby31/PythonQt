@@ -1,0 +1,3 @@
+add_subdirectory(NicePyConsole)
+add_subdirectory(PyScriptingConsole)
+
