@@ -8,7 +8,11 @@ TEMPLATE = lib
 
 TARGET = PythonQt
 
-DESTDIR = /Users/doudou/workspaceQT/MyLibrary/$$QT_VERSION
+!exists($$(MYLIBRARY)) {
+    error("variable MYLIBRARY not set.")
+}
+
+DESTDIR = $$(MYLIBRARY)/$$QT_VERSION
 
 CONFIG += qt
 CONFIG -= flat

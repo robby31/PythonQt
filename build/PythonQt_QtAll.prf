@@ -9,10 +9,14 @@ CONFIG(debug, debug|release) {
   DEBUG_EXT = 
 }
 
+!exists($$(MYLIBRARY)) {
+    error("variable MYLIBRARY not set.")
+}
+
 win32-msvc* {
-  LIBS += /Users/doudou/workspaceQT/MyLibrary/$$QT_VERSION/PythonQt_QtAll$${DEBUG_EXT}.lib
+  LIBS += $$(MYLIBRARY)/$$QT_VERSION/PythonQt_QtAll$${DEBUG_EXT}.lib
 } else {
-  LIBS += -L/Users/doudou/workspaceQT/MyLibrary/$$QT_VERSION -lPythonQt_QtAll$${DEBUG_EXT}
+  LIBS += -L$$(MYLIBRARY)/$$QT_VERSION -lPythonQt_QtAll$${DEBUG_EXT}
 }
 
 

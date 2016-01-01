@@ -3,7 +3,11 @@ TEMPLATE = lib
 
 TARGET = PythonQt_QtAll
 
-DESTDIR = /Users/doudou/workspaceQT/MyLibrary/$$QT_VERSION
+!exists($$(MYLIBRARY)) {
+    error("variable MYLIBRARY not set.")
+}
+
+DESTDIR = $$(MYLIBRARY)/$$QT_VERSION
 
 include ( ../../build/common.prf )  
 include ( ../../build/PythonQt.prf )  

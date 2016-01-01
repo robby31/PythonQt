@@ -1,7 +1,7 @@
 # profile to include and link Python
 
 # Change this variable to your python version (2.6, 2.7, 3.3, ...)
-win32:PYTHON_VERSION=2.7
+win32:PYTHON_VERSION=27
 unix:PYTHON_VERSION=2.7
 
 macx {
@@ -30,8 +30,18 @@ macx {
     DEBUG_EXT = 
   }
 
+  !exists($$(PYTHON_PATH)) {
+    error("variable PYTHON_PATH not set.")
+  }
+
+  !exists($$(PYTHON_LIB)) {
+    error("variable PYTHON_LIB not set.")
+  }
+
   win32:INCLUDEPATH += $$(PYTHON_PATH)/PC $$(PYTHON_PATH)/include
-  win32:LIBS += $$(PYTHON_LIB)/python$${PYTHON_VERSION}$${DEBUG_EXT}.lib
+  win32-msvc*:LIBS += $$(PYTHON_LIB)/python$${PYTHON_VERSION}$${DEBUG_EXT}.lib
+  win32-g++*:LIBS += $$(PYTHON_LIB)/libpython$${PYTHON_VERSION}$${DEBUG_EXT}.a
+
 } else:unix {
   # on linux, python-config is used to autodetect Python.
   # make sure that you have installed a matching python-dev package.
