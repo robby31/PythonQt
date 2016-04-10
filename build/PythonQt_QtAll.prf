@@ -25,11 +25,24 @@ PYTHONQT_STATIC = $$(PYTHONQT_STATIC)
 isEmpty(PYTHONQT_STATIC) {
 } else {
   # static linking
-  QT += webkit gui svg sql network xml opengl
+  QT += gui svg sql network xml opengl
+
+  lessThan(QT_MAJOR_VERSION, 5) {
+    QT += webkit
+  } else {
+    lessThan(QT_MINOR_VERSION, 6) {
+      QT += webkit
+    }
+  }
 
   contains(QT_MAJOR_VERSION, 5) {
-    QT += widgets webkitwidgets
+    QT += widgets
     QT += uitools
+    lessThan(QT_MINOR_VERSION, 6) {
+      QT += webkitwidgets
+    } else {
+      DEFINES += QT_NO_WEBKIT
+    }
   } else {
     CONFIG += uitools
   }
