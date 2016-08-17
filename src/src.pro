@@ -17,6 +17,10 @@ DESTDIR = $$(MYLIBRARY)/$$QT_VERSION
 CONFIG += qt
 CONFIG -= flat
 
+win32-msvc2015: QMAKE_CXXFLAGS_RELEASE -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CFLAGS_RELEASE -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CFLAGS -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CXXFLAGS -= -Zc:strictStrings
 
 # allow to choose static linking through the environment variable PYTHONQT_STATIC
 PYTHONQT_STATIC = $$(PYTHONQT_STATIC)

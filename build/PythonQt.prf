@@ -20,8 +20,4 @@ CONFIG(debug, debug|release) {
     error("variable MYLIBRARY not set.")
 }
 
-win32-msvc* {
-  LIBS += $$(MYLIBRARY)/$$QT_VERSION/PythonQt$${DEBUG_EXT}.lib
-} else {
-  LIBS += -L$$(MYLIBRARY)/$$QT_VERSION -lPythonQt$${DEBUG_EXT}
-}
+LIBS += -L$$(MYLIBRARY)/$$QT_VERSION -lPythonQt$${DEBUG_EXT}

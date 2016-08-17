@@ -7,6 +7,11 @@ contains(QT_MAJOR_VERSION, 5) {
 
 mac:CONFIG-= app_bundle
 
+win32-msvc2015: QMAKE_CXXFLAGS_RELEASE -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CFLAGS_RELEASE -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CFLAGS -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CXXFLAGS -= -Zc:strictStrings
+
 include ( ../../build/common.prf )  
 include ( ../../build/PythonQt.prf )  
 include ( ../../build/PythonQt_QtAll.prf )

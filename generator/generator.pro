@@ -5,6 +5,10 @@ DESTDIR = .
 
 include(generator.pri)
 
+win32-msvc2015: QMAKE_CXXFLAGS_RELEASE -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CFLAGS_RELEASE -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CFLAGS -= -Zc:strictStrings
+win32-msvc2015: QMAKE_CXXFLAGS -= -Zc:strictStrings
 
 # Input
 HEADERS += \

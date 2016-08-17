@@ -829,11 +829,11 @@ QVariant PythonQt::evalCode(PyObject* object, PyObject* pycode) {
       dict = PyObject_GetAttrString(object, "__dict__");
       globals = PyObject_GetAttrString(PyImport_ImportModule(
 #ifdef PY3K
-                                         PyUnicode_AsUTF8(
+                                         PyUnicode_AsUTF8(PyObject_GetAttrString(object, "__module__"))),"__dict__");
 #else
-                                         PyString_AS_STRING(
+                                         PyString_AS_STRING(PyObject_GetAttrString(object, "__module__"))),"__dict__");
 #endif
-                                           PyObject_GetAttrString(object, "__module__"))),"__dict__");
+
     }
     PyObject* r = NULL;
     if (dict) {
